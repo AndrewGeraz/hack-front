@@ -1,11 +1,13 @@
 import { createSlice,PayloadAction } from "@reduxjs/toolkit";
 
 type InitialStateType = {
-    isShowMenu: boolean
+    isShowMenu: boolean,
+    isErrorShow: boolean
 }
 
 const initialState: InitialStateType = {
-    isShowMenu: false
+    isShowMenu: false,
+    isErrorShow: false
 }
 
 const serviceSlice = createSlice({
@@ -14,10 +16,16 @@ const serviceSlice = createSlice({
     reducers: {
 showMenu(state, action:PayloadAction<boolean>) {
     state.isShowMenu = action.payload
+},
+showError(state,action:PayloadAction<boolean>) {
+    state.isErrorShow = action.payload
 } 
     }
 })
 
-export const {showMenu} = serviceSlice.actions
+export const {
+    showMenu,
+    showError
+} = serviceSlice.actions
 
 export default serviceSlice.reducer
