@@ -60,7 +60,7 @@ export default function FindTeam() {
                     specializations: ['PM','Frontend','Backend','DevOps']
         },
     ],
-    openPos: ['Frontend', 'Backend', 'DevOps','ML Engineer', 'Сосать хуи']
+    openPos: ['Frontend', 'Backend', 'DevOps','ML Engineer']
 },
 {
     name: 'INMIN.net',
