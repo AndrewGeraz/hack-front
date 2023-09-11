@@ -4,13 +4,21 @@ import classes from './Header.module.scss'
 import MenuButton from '../MenuButton/MenuButton'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { useAppDispatch, useAppSelector } from '@/app/lib/redux/hooks'
+import { showLogin } from '@/app/lib/redux/serviceSlice'
+import { logout } from '@/app/lib/redux/userSlice'
 
 export default function Header() {
 const router = useRouter()
 const pathname = usePathname()
-const [isMainPage,setIsMainPage] = useState<boolean>(pathname==='/'?true:false)
-console.log(pathname)
-console.log('PATHNAME')
+const [isMainPage,setIsMainPage] = useState<boolean>(pathname==='/'||'userProfile'?true:false)
+const dispatch = useAppDispatch()
+const isSignIn = useAppSelector(state=>state.userSlice.userData.isSignIn)
+
+function signout() {
+  dispatch(logout())
+  router.push('/')
+}
 
 useEffect(()=>{
     setIsMainPage(pathname==='/'?true:false)
@@ -30,7 +38,12 @@ useEffect(()=>{
 <path fill-rule="evenodd" clip-rule="evenodd" d="M71.8317 43.6185L65.6376 27.1642L59.3961 43.6185H51.1016L59.3347 22.1587H71.9523L80.1235 43.6185H71.8317ZM65.6423 23.4659L72.7364 42.3112H78.2269L71.0512 23.466L65.6423 23.4659L60.2333 23.466L53.0033 42.3112H58.4938L65.6423 23.4659Z" fill="#282828"/>
 </svg>
           </div>
-          {isMainPage&&<button type="button" className={classes.SignInBtn} onClick={()=>router.push('/signup')}>Вход</button>}
+          {isMainPage&&!isSignIn&&
+            <button type="button" className={classes.SignUpBtn} onClick={()=>dispatch(showLogin(true))}>Вход</button>
+          }
+          {isSignIn&&
+          <button type='button' className={classes.SignUpBtn} onClick={()=>signout()}>Выход</button>
+          }
         </header>
     )
 }

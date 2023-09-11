@@ -1,10 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import serviceSliceReducer from './serviceSlice'
+import specSliceReducer from './specSlice'
+import userSliceReducer from './userSlice'
 
 export function createReduxStore() {
     return configureStore({
         reducer: {
-            serviceSlice: serviceSliceReducer
+            serviceSlice: serviceSliceReducer,
+            specSlice: specSliceReducer,
+            userSlice: userSliceReducer
         }
     })   
 }

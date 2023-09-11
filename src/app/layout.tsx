@@ -20,7 +20,6 @@ const Gilroy = localFont({
 
 export default function RootLayout(props: {
   children: React.ReactNode,
-  menu: React.ReactNode
 }) {
 
   return (

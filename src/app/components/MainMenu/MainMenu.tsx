@@ -1,6 +1,7 @@
 import { useAppDispatch } from '@/app/lib/redux/hooks'
 import classes from './MainMenu.module.scss'
 import { showMenu } from '@/app/lib/redux/serviceSlice'
+import Link from 'next/link'
 
 export default function MainMenu() {
 const dispatch = useAppDispatch()
@@ -27,14 +28,9 @@ const dispatch = useAppDispatch()
 <path fill-rule="evenodd" clip-rule="evenodd" d="M71.8317 43.6185L65.6376 27.1642L59.3961 43.6185H51.1016L59.3347 22.1587H71.9523L80.1235 43.6185H71.8317ZM65.6423 23.4659L72.7364 42.3112H78.2269L71.0512 23.466L65.6423 23.4659L60.2333 23.466L53.0033 42.3112H58.4938L65.6423 23.4659Z" fill="#282828"/>
 </svg>
             </div>
-            <ul>
-                <li>ХАКАТОНЫ</li>
-                <li>НАЙТИ КОМАНДУ/СПЕЦА</li>
-                <li>ЗАЛ СЛАВЫ</li>
-                <li>МОИ ДОСТИЖЕНИЯ</li>
-                <li>КАЛЕНДАРЬ СОБЫТИЙ</li>
-                <li>ПОМОЩЬ НА ХАКАТОНЕ</li>
-            </ul>
+            <div className={classes.LinksList}>
+            <Link href="/findProgrammer" className={classes.Link}>НАЙТИ КОМАНДУ/СПЕЦА</Link>
+            </div>
         </div>
     )
 }
